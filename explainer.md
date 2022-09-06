@@ -182,3 +182,9 @@ We want to acknowledge and thank the other browser vendors for all the work they
 In addition we are thankful for the work being done in the [PrivacyCG](https://privacycg.github.io/nav-tracking-mitigations/) on this topic.
 
 Thank you for design input, feedback, and review from:
+
+* Jeffrey Yasskin
+* Joshua Hood
+* Kevin Berlin
+* Ryan Tarpine
+* Stefan Popoveniuc
