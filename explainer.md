@@ -1,4 +1,4 @@
-# Bounce tTracking mMitigations eExplainer
+# Bounce Tracking Mitigations Explainer
 
 # Introduction
 
@@ -57,7 +57,7 @@ In this proposal, stateful bounce detection would be applied against all sites w
 
 In this scenario we are interested in sites that navigate or redirect themselves to a tracker domain and then back to the original site.  Identifying information is often encoded in the URLs or Referer headers.  The tracker domain is then able to access storage to implement what is effectively an unpartitioned third-party cookie.  The tracker domain does not have any first-party relationship with the user.
 
-![Diagram: Redirect Bounce Simulating a 3P Cookie](diagrams/explainer_diagram_1.png)
+![Diagram 1](diagrams/explainer_diagram_1.png)
 
 This technique also bypasses privacy settings and UI that already exist in the browser.  If the user has disabled third-party cookies in settings then they have clearly signaled they do not want third-party cookie semantics.  This kind of bounce tracking allows sites to ignore this user choice for increased privacy.
 
@@ -67,9 +67,7 @@ This tracking scenario will be mitigated by this effort by wiping the tracker do
 
 Another tracking scenario involves a source site redirecting all outgoing links through a tracker domain.  Again, the tracker domain is able to access first-party storage in this scenario and has no first-party relationship with the user.
 
-<p id="gdcalert2" ><span style="color: red; font-weight: bold">>>>>  GDC alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href=http://go/g3doc-drawings>go/g3doc-drawings</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert3">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>> </span></p>
-
-![drawing](https://docs.google.com/a/google.com/drawings/d/12345/export/png)
+![Diagram 2](diagrams/explainer_diagram_2.png)
 
 This tracking scenario will be mitigated by this effort by wiping the tracker domain's storage.
 
@@ -79,9 +77,7 @@ Federated authentication is a very important scenario we must consider.  This us
 
 In general federated authentication follows the OpenID connect standard.  The source site navigates to the identity provider which then tries to authenticate the user.  Upon success the identity provider redirects back to the original site with a token in a query parameter.  See the diagram below:
 
-<p id="gdcalert3" ><span style="color: red; font-weight: bold">>>>>  GDC alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href=http://go/g3doc-drawings>go/g3doc-drawings</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert4">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>> </span></p>
-
-![drawing](https://docs.google.com/a/google.com/drawings/d/12345/export/png)
+![Diagram 3](diagrams/explainer_diagram_3.png)
 
 This is a use case that we consider supported and we would like to avoid breaking.  Unfortunately, this flow looks extremely similar to the "redirect bounce to simulate a third-party cookie" scenario above.  The main difference is that the user is expected to interact with the identity provider to login, either as part of the redirect flow or during another first-party visit.  This is why our algorithm for determining if deletion should occur looks for this kind of signal.
 
@@ -89,9 +85,7 @@ This is a use case that we consider supported and we would like to avoid breakin
 
 A similar redirection flow happens when a site uses single sign-on (SSO).  In this case the user expects to log in with the identity provider once and then be automatically logged-in for all visits on other sites.  In this case there is no interaction during the redirected navigation, but instead it happened during a previous first-party visit to the identity provider.
 
-<p id="gdcalert4" ><span style="color: red; font-weight: bold">>>>>  GDC alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href=http://go/g3doc-drawings>go/g3doc-drawings</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert5">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>> </span></p>
-
-![drawing](https://docs.google.com/a/google.com/drawings/d/12345/export/png)
+![Diagram 4](diagrams/explainer_diagram_4.png)
 
 This is another use case that we wish to support without any breakage.  Therefore our criteria for deleting storage must consider interactions or engagement outside of the redirection flow itself.
 
