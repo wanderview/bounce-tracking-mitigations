@@ -1,5 +1,7 @@
 # Bounce Tracking Mitigations Explainer
 
+September 2022 - Ben Kelly, Brian Lefler
+
 # Introduction
 
 With browser vendors now actively working to remove third-party cookies from the web, some platform trackers are moving to bounce tracking.  This technique involves navigating to a tracker domain at the top level of a browser tab, setting or reading a first-party cookie, and then quickly redirecting away using a request that encodes the value of that first-party cookie.  Sometimes the redirect is back to the original page and sometimes to a new site.  In either case, bounce tracking semantically functions like setting a third-party cookie.
