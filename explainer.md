@@ -161,9 +161,9 @@ There is some implementation complexity to be aware of when wiping storage.  The
 
 Some issues that we’d like to discuss:
 
-1. Are there non-tracking uses of redirect bounces not enumerated in the explainer?
+1. [Are there non-tracking uses of redirect bounces not enumerated in the explainer?](https://github.com/wanderview/bounce-tracking-mitigations/issues/1)
     1. If so, are there new signals that can be used to exclude these uses from impact?
-2. What signals best indicate that a redirect is part of a supported use case?
+2. [What signals best indicate that a redirect is part of a supported use case?](https://github.com/wanderview/bounce-tracking-mitigations/issues/2)
 
 # Stakeholder Feedback / Opposition
 
