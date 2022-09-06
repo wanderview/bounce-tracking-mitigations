@@ -57,9 +57,7 @@ In this proposal, stateful bounce detection would be applied against all sites w
 
 In this scenario we are interested in sites that navigate or redirect themselves to a tracker domain and then back to the original site.  Identifying information is often encoded in the URLs or Referer headers.  The tracker domain is then able to access storage to implement what is effectively an unpartitioned third-party cookie.  The tracker domain does not have any first-party relationship with the user.
 
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>  GDC alert: inline drawings not supported directly from Docs. You may want to copy the inline drawing to a standalone drawing and export by reference. See <a href=http://go/g3doc-drawings>go/g3doc-drawings</a> for details. The img URL below is a placeholder. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>> </span></p>
-
-![drawing](https://docs.google.com/a/google.com/drawings/d/12345/export/png)
+![Diagram: Redirect Bounce Simulating a 3P Cookie](diagrams/explainer_diagram_1.png)
 
 This technique also bypasses privacy settings and UI that already exist in the browser.  If the user has disabled third-party cookies in settings then they have clearly signaled they do not want third-party cookie semantics.  This kind of bounce tracking allows sites to ignore this user choice for increased privacy.
 
